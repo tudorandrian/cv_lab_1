@@ -1,38 +1,24 @@
-import numpy as np
-import cv2
+import cv2  # Import OpenCV for video and image processing.
+
+# Initialize the video capture object to access the default camera (device index 0).
 cap = cv2.VideoCapture(0)
 
-# while True:
-#     # Capture frame-by-frame
-#     ret, frame = cap.read()
-#     # Our operations on the frame come here
-#     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-#     # Display the resulting frame
-#     cv2.imshow('frame',gray)
-#     if cv2.waitKey(1) & 0xFF == ord('q'):
-#         break
-#
-# #When everything done, release the capture
-# cap.release()
-# cv2.destroyAllWindows()
-
-# Define the codec and create VideoWriter object
-fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi',fourcc, 20.0, (640,480))
-
-while(cap.isOpened()):
+while True:
+    # Capture each frame from the camera.
     ret, frame = cap.read()
-    if ret==True:
-        frame = cv2.flip(frame,0)
-        # write the flipped frame
-        out.write(frame)
-        cv2.imshow('frame',frame)
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-    else:
+
+    # Convert the captured frame from BGR (default OpenCV color format) to grayscale.
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Display the grayscale frame in a window named 'frame'.
+    cv2.imshow('frame', gray)
+
+    # Break the loop if the 'q' key is pressed.
+    if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
-# Release everything if job is finished
+# Release the video capture object to free up resources.
 cap.release()
-out.release()
+
+# Close all OpenCV windows.
 cv2.destroyAllWindows()
