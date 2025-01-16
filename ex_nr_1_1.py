@@ -1,4 +1,3 @@
-import numpy as np  # Importing NumPy for numerical operations (not directly used in this script).
 import cv2  # Importing OpenCV library for image processing.
 
 # Reading the image file 'city_hall.jpg' in color mode (flag value 3 is equivalent to cv2.IMREAD_COLOR).
