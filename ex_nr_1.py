@@ -48,5 +48,5 @@ plt.show()
 hist = cv2.calcHist([img], [0], None, [256], [0, 256])
 
 # Display the histogram of pixel intensities using Matplotlib.
-plt.hist(img.ravel(), 256, [0, 256])
+plt.hist(img.ravel(), bins=256, range=[0, 256])
 plt.show()
